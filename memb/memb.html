@@ -2,9 +2,9 @@
 <html>
     <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-firestore.js"></script>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="styleanon.css">
         <title>
-            Harker Helpers - Feed
+            Harker Helpers - Members
         </title>
 <style>
 body {
@@ -41,13 +41,16 @@ body {
 <body>
 
 <div class="topnav">
-  <a class="active" href="feed.html">Home</a>
-  <a href="create.html">Submit News</a>
+  <a class="active" href="memb.html">Home</a>
+  <a href="createa.html">Submit News</a>
+  <a href="anon.html">View Private Posts</a>
   <a href="abouta.html">About</a>
-  <a href="index.html">Back To Login</a>
+  <a href="/index.html">Back To Login</a>
 </div>
+          
         <div class="content">
-  
+
+            <center><h1 style = "color:black; text-decoration: underline; align-self: center;">Member Feed</h1></center>
             <ul id="news"></ul>
   
         </div>
@@ -67,4 +70,4 @@ body {
             const db = firebase.firestore();
             db.settings({ timestampsInSnapshots: true }); 
         </script>
-        <script src="view.js"></script>
+        <script src="viewall.js"></script>

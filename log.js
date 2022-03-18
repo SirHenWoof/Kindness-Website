@@ -16,6 +16,7 @@
 
   const auth =  firebase.auth();
 
+
   //signup function
   function signUp(){
     var email = document.getElementById("email");
@@ -46,14 +47,20 @@
 
   //active user to homepage
   firebase.auth().onAuthStateChanged((user)=>{
-    if(user){
+    if(user.email == "26henryf@students.harker.org" || user.email == "26sathvikv@students.harker.org"){
+      var email = user.email;
+      alert("Active user "+email+" is an Admin");
+      document.location.href='admin/admin.html', localStorage.setItem('EMAIL', email);
+    }
+    else if(user.email == "harkerkindnessclub@gmail.com"){
+      var email = user.email;
+      alert("Active user "+email+" is a Member");
+      document.location.href='memb/memb.html', localStorage.setItem('EMAIL', email);
+    }
+    else if(user){
       var email = user.email;
       alert("Active user "+email);
-      document.location.href='feed.html'
-    }if(user){
-      var email = "26henryf@students.harker.org" || "26sathvikv@students.harker.org" || "henry@fradin.com";
-      alert("Active user "+email+"is an admin");
-      document.location.href='admin.html'
+      document.location.href='feed.html', localStorage.setItem('EMAIL', email);
     }else{
       alert("No Active user Found")
     }

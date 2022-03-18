@@ -4,7 +4,7 @@ body{
 }
 
 h1{
-    color: #fff;
+    color: ##f3e0ee;
     font-size: 64px;
     letter-spacing: 2px;
     margin-top: 20px;
@@ -12,8 +12,9 @@ h1{
 }
 
 .content{
-    background: #fff;
+    background: #f5dbef;
     max-width: auto;
+    align-content: center;
     margin: 30px auto;
     padding:  20px 30px;
     border-radius: 10px 10px 10px 10px;
@@ -27,38 +28,34 @@ ul{
 
 li{
     padding-bottom: 10px;
-    background: #f6f6f6;
+    background: #f5dbef;
     font-size: 20px;
     color: #555;
     position: relative;
-    border-bottom: 1px solid #e6e6e6;
+    border-width: 2px;
+    border-top: 2px solid #e6e6e6;
     height: auto;
     width: auto;
 }
 
 li span{
     display: block;
+    border-width: 2px;
 }
 
 li span:nth-child(1){
     text-align: center;
+    border-width: 2px;
     font-size: 20px;
-    margin-top: 20px;
+  
+    margin-top: 15px;
     color: rgb(0, 0, 0);
 }
 
 li span:nth-child(2){
     text-align: center;
-    font-size: 15px;
-    margin-top: 0px;
-    color: #999;
-}
-
-li span:nth-child(3){
-    text-align: center;
-    font-size: 25px;
-    margin-top: 15px;
+    border-width: 2px;
+    font-size: 30px;
+    margin-top: 10px;
     color: rgb(0, 0, 0);
 }
-
-

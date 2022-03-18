@@ -4,9 +4,7 @@
         <title>
            Harker Helpers - Submit Post
         </title>
-        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"><center>
-        <h3>Harker Helpers Form</h3>
-          <style>
+<style>
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -41,11 +39,16 @@ body {
 <body>
 
 <div class="topnav">
-  <a href="feed.html">Home</a>
-  <a class="active" href="create.html">Submit News</a>
-  <a href="about.html">About</a>
-  <a href="index.html">Back To Login</a>
+  <a href="admin.html">Admin</a>
+  <a class="active" href="createa.html">Submit News</a>
+  <a href="anon.html">View Private Posts</a>
+  <a href="user.html">View Users</a>
+  <a href="abouta.html">About</a>
+  <a href="/index.html">Back To Login</a>
 </div>
+       <center>   
+        <h3 style="font-size=40px">Harker Helpers Form</h3>
+
         <div>
           <form>
             <label for="name">Name, (If Anonymous, write Anonymous)</label><br>
@@ -57,6 +60,7 @@ body {
               <option id="HwHelp" value="Homework Help">Homework Help</option>
               <option id="FrHelp" value="Friend/Family Help">Friend/Family issues Help</option>
               <option id="Com" value="Comment">Comment</option>
+              <option id="Ano" value="Announcement">Announcement</option>
             </select><br>
       
             <label for="post">Post</label><br>
@@ -69,5 +73,5 @@ body {
       </center>
         <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
-    <script src="form.js"></script>
+    <script src="forma.js"></script>
 </html>

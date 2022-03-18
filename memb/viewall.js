@@ -4,15 +4,18 @@ const newse = document.querySelector('#news');
 function newsR(doc){
     let li = document.createElement('li');
     let name = document.createElement('span');
+    let email = document.createElement('span');
     let type = document.createElement('span');
     let post = document.createElement('span');
 
     li.setAttribute('data-id', doc.id);
-    name.textContent = doc.data().Name;
-    type.textContent = doc.data().Type;
+    name.textContent = "Name: " + doc.data().Name;
+    email.textContent = "Email: " + doc.data().Email;
+    type.textContent = "Type of Post: " + doc.data().Type;
     post.textContent = doc.data().Post;
 
     li.appendChild(name);
+    li.appendChild(email);
     li.appendChild(type);
     li.appendChild(post);
 
@@ -20,7 +23,7 @@ function newsR(doc){
 }
 
 // getting data
-db.collection('anopost') .orderBy("Time", "desc").get().then(snapshot => {
+db.collection('posts') .orderBy("Time", "desc").get().then(snapshot => {
     snapshot.docs.forEach(doc => {
         newsR(doc);
     });

@@ -29,16 +29,18 @@ let type = document.getElementById('type').value
 let post = document.getElementById('post').value
 let tmnow = Date.now()
 let indid = firebase.firestore.FieldValue.serverTimestamp()
+let Email = localStorage.getItem('EMAIL');
 
     //Save Form Data To Firebase
     db.doc(name + ":" + type + ":" + tmnow).set({
       Name: name,
+      Email: Email,
       Type: type,
       Post: post,
       Time: indid
     }).then( () => {
       console.log("Data saved")
-      document.location.href=('admin.html')
+      document.location.href=('memb.html')
     }).catch((error) => {
       console.log(error)
     })
@@ -61,16 +63,18 @@ let type = document.getElementById('type').value
 let post = document.getElementById('post').value
 let tmnow = Date.now()
 let indid = firebase.firestore.FieldValue.serverTimestamp()
+let Email = localStorage.getItem('EMAIL');
 
     //Save Form Data To Firebase
     adb.doc(name + ":" + type + ":" + tmnow).set({
       Name: name,
+      Email: Email,
       Type: type,
       Post: post,
       Time: indid
     }).then( () => {
       console.log("Data saved")
-      document.location.href=('admin.html')
+      document.location.href=('memb.html')
     }).catch((error) => {
       console.log(error)
     })

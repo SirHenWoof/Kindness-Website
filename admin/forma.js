@@ -40,7 +40,7 @@ let Email = localStorage.getItem('EMAIL');
       Time: indid
     }).then( () => {
       console.log("Data saved")
-      document.location.href=('feed.html')
+      document.location.href=('admin.html')
     }).catch((error) => {
       console.log(error)
     })
@@ -74,7 +74,7 @@ let Email = localStorage.getItem('EMAIL');
       Time: indid
     }).then( () => {
       console.log("Data saved")
-      document.location.href=('feed.html')
+      document.location.href=('admin.html')
     }).catch((error) => {
       console.log(error)
     })
