@@ -33,29 +33,36 @@ ul{
     background: #f7e9f3;
 }
 
-
 li{
     padding-bottom: 10px;
-    background: #f5dbef;
+    background: #f7e9f3;
     font-size: 20px;
     color: #555;
     position: relative;
-  overflow: hidden;
-    border-width: 2px;
-    border-bottom: 1px solid #e6e6e6;
+    overflow: hidden;
+    border-width: 10px;
+    border-top: 15px solid #f5dbef;
+    border-left: 15px solid #f5dbef;
+    border-right: 15px solid #f5dbef;
     height: auto;
     width: auto;
 }
 
 li span{
     display: block;
-    border-width: 2px;
+    border-width: 30px;
+    margin-top:15px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 li span:nth-child(1){
     text-align: center;
     border-width: 2px;
+    text-decoration: underline;
     font-size: 30px;
+    font-weight: bold;
     margin-top: 20px;
     color: rgb(0, 0, 0);
 }
@@ -68,15 +75,38 @@ li span:nth-child(2){
     color: rgb(0, 0, 0);
 }
 
+
 li span:nth-child(3){
     text-align: center;
     border-width: 2px;
     font-size: 20px;
-    margin-top: 10px;
+    margin-top: 0px;
     color: rgb(0, 0, 0);
 }
 
-#Com{  
+li span:nth-child(4){
+    text-align: center;
+    border-width: 2px;
+    font-size: 25px;
+    margin-top: 15px;
+    color: rgb(0, 0, 0);
+}
+
+button{  
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  color: white;
+  padding: 15px 32px;
+  text-align: right;
+  align: right;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: #00bfff;
+}
+#Del{  
   border: none;
   color: white;
   padding: 15px 32px;
@@ -86,6 +116,7 @@ li span:nth-child(3){
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
+  margin-right: 25px;
   cursor: pointer;
   background-color: #f00000;
 }

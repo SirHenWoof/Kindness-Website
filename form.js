@@ -15,6 +15,7 @@
   
   //Variable to access database collection
   const db = firestore.collection("posts")
+  const udb = firestore.collection("users")
   //Get Submit Form
   let submitButton = document.getElementById('submit')
   
@@ -26,6 +27,7 @@
     //Get Form Values
 let name = document.getElementById('name').value
 let type = document.getElementById('type').value
+let title = document.getElementById('title').value
 let post = document.getElementById('post').value
 let tmnow = Date.now()
 let indid = firebase.firestore.FieldValue.serverTimestamp()
@@ -33,18 +35,51 @@ let Email = localStorage.getItem('EMAIL');
 
     //Save Form Data To Firebase
     db.doc(name + ":" + type + ":" + tmnow).set({
+      Title: title,
       Name: name,
       Email: Email,
       Type: type,
       Post: post,
-      Time: indid
+      Time: indid,
+      tmnow: tmnow
     }).then( () => {
       console.log("Data saved")
       document.location.href=('feed.html')
     }).catch((error) => {
       console.log(error)
     })
-  
+
+
+    db.doc(name + ":" + type + ":" + tmnow).collection("comments").add({
+      Title: "Original Post",
+      Name: name,
+      Email: Email,
+      Type: type,
+      Post: post,
+      Time: indid,
+      tmnow: tmnow
+    }).then( () => {
+      console.log("Data saved")
+      document.location.href=('admin.html')
+    }).catch((error) => {
+      console.log(error)
+    })
+
+
+      udb.doc(Email).collection("posts").doc(name + ":" + type + ":" + tmnow).set({
+      Title: title,
+      Name: name,
+      Type: type,
+      Post: post,
+      PoLo: "Normal",
+      Time: indid,
+      tmnow: tmnow
+    }).then( () => {
+      console.log("Data saved")
+      document.location.href=('feed.html')
+    }).catch((error) => {
+      console.log(error)
+    })
     //alert
     alert("Your Form Has Been Submitted Successfully")
 })
@@ -60,6 +95,7 @@ let Email = localStorage.getItem('EMAIL');
     //Get Form Values
 let name = document.getElementById('name').value
 let type = document.getElementById('type').value
+let title = document.getElementById('title').value
 let post = document.getElementById('post').value
 let tmnow = Date.now()
 let indid = firebase.firestore.FieldValue.serverTimestamp()
@@ -67,19 +103,53 @@ let Email = localStorage.getItem('EMAIL');
 
     //Save Form Data To Firebase
     adb.doc(name + ":" + type + ":" + tmnow).set({
+      Title: title,
       Name: name,
       Email: Email,
       Type: type,
       Post: post,
-      Time: indid
+      Time: indid,
+      tmnow: tmnow
     }).then( () => {
       console.log("Data saved")
       document.location.href=('feed.html')
     }).catch((error) => {
       console.log(error)
     })
-  
+
+
+    db.doc(name + ":" + type + ":" + tmnow).collection("comments").add({
+      Title: "Original Post",
+      Name: name,
+      Email: Email,
+      Type: type,
+      Post: post,
+      Time: indid,
+      tmnow: tmnow
+    }).then( () => {
+      console.log("Data saved")
+      document.location.href=('admin.html')
+    }).catch((error) => {
+      console.log(error)
+    })
+
+  udb.doc(Email).collection("posts").doc(name + ":" + type + ":" +   tmnow).set({
+      Title: title,
+      Name: name,
+      Email: Email,
+      Type: type,
+      Post: post,
+      PoLo: "Anonymous",
+      Time: indid,
+      tmnow: tmnow
+    }).then( () => {
+      console.log("Data saved")
+      document.location.href=('feed.html')
+    }).catch((error) => {
+      console.log(error)
+    })
     //alert
-    alert("Your Private Form Has Been Submitted Successfully")})
+    alert("Your Form Has Been Submitted Successfully")
+})
 
 

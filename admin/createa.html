@@ -8,6 +8,7 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background: #efefef;
 }
 
 .topnav {
@@ -39,13 +40,17 @@ body {
 <body>
 
 <div class="topnav">
+  <center><h1 style = "color:#eab0dc; align-self: center; font-size: 60px">Harker Helpers</h1></center>
   <a href="admin.html">Admin</a>
   <a class="active" href="createa.html">Submit News</a>
   <a href="anon.html">View Private Posts</a>
   <a href="user.html">View Users</a>
+  <a href="myposts.html">View My Posts</a>
   <a href="abouta.html">About</a>
   <a href="howto.html">How to Use the Website</a>
+  <a href="versionlog.html">Version Log</a>
   <a href="/memb/memb.html">View as Member</a>
+  <a href="/feed.html">View as Regular User</a>
   <a href="/index.html">Back To Login</a>
 </div>
        <center>   
@@ -54,16 +59,19 @@ body {
         <div>
           <form>
             <label for="name">Name, (If Anonymous, write Anonymous)</label><br>
-            <input type="text" id="name" name="name" placeholder="Your Name.."><br>
+            <input type="text" id="name" name="name" placeholder="Your Name.."><br><br>
+
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title" placeholder="Your Title..."><br><br>
       
             <label for="type">Choose a Type:</label><br>
 
             <select id="type" name="type">
-              <option id="HwHelp" value="Homework Help">Homework Help</option>
-              <option id="FrHelp" value="Friend/Family Help">Friend/Family issues Help</option>
-              <option id="Com" value="Comment">Comment</option>
-              <option id="Ano" value="Announcement">Announcement</option>
-            </select><br>
+              <option id="type" value="Homework Help">Homework Help</option>
+              <option id="type" value="Relationship Help">Relationship issues Help</option>
+              <option id="type" value="Suggestion">Suggestion</option>
+              <option id="type" value="Announcement">Announcement</option>
+            </select><br><br>
       
             <label for="post">Post</label><br>
             <textarea type="text" id="post" name="post" rows="10" cols="50"></textarea><br>

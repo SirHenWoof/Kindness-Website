@@ -2,9 +2,9 @@
 <html>
     <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-firestore.js"></script>
-        <link rel="stylesheet" href="stylea.css">
+        <link rel="stylesheet" href="mypo.css">
         <title>
-            Harker Helpers - Users
+            Harker Helpers - My Posts
         </title>
 <style>
 body {
@@ -45,17 +45,20 @@ body {
   <a href="admin.html">Admin</a>
   <a href="createa.html">Submit News</a>
   <a href="anon.html">View Private Posts</a>
-  <a class="active" href="user.html">View Users</a>
-  <a href="myposts.html">View My Posts</a>
+  <a href="user.html">View Users</a>
+  <a class="active" href="myposts.html">View My Posts</a>
   <a href="abouta.html">About</a>
   <a href="howto.html">How to Use the Website</a>
+  <a href="versionlog.html">Version Log</a>
   <a href="/memb/memb.html">View as Member</a>
   <a href="/feed.html">View as Regular User</a>
   <a href="/index.html">Back To Login</a>
 </div>
-          
+
+
         <div class="content">
-   <center><h1 style = "color:black; text-decoration: underline; align-self: center; font-size: 40px">Users</h1></center>
+
+            <center><h1 style = "color:black; text-decoration: underline; align-self: center; font-size: 50px; margin-bottom: 10px">My Posts</h1></center>
             <ul id="news"></ul>
   
         </div>
@@ -75,4 +78,4 @@ body {
             const db = firebase.firestore();
             db.settings({ timestampsInSnapshots: true }); 
         </script>
-        <script src="viewa.js"></script>
+        <script src="mypost.js"></script>

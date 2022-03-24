@@ -9,54 +9,40 @@ function newsR(doc){
     let post = document.createElement('span');
   
     li.setAttribute('data-id', doc.id);
-    title.textContent = doc.data().Type + ": " + doc.data().Title;
+    title.textContent = "Comment: " + doc.data().Title;
     name.textContent = "Name: " + doc.data().Name;
     email.textContent = "Email: " + doc.data().Email;
     post.textContent = doc.data().Post;
-  let btn = document.createElement("button");
-btn.innerHTML = "Comments";
-btn.name = "Com";
-btn.id = "Com";
-btn.class = "Com";
-  btn.onclick = function goCom(){
-    localStorage.setItem('TITLE', doc.data().Name + ":" + doc.data().Type + ":" + doc.data().tmnow);
-    localStorage.setItem('UEM', doc.data().Email)
-    document.location.href="inpo.html"
-}
-    let delbtn = document.createElement("button");
-delbtn.innerHTML = "Delete Post";
+      let delbtn = document.createElement("button");
+delbtn.innerHTML = "Delete Comment";
 delbtn.name = "Del";
 delbtn.id = "Del";
 delbtn.class = "Del";
   delbtn.onclick = function goDel(){    
     localStorage.setItem('DEL', doc.data().Name + ":" + doc.data().Type + ":" + doc.data().tmnow);
     var Email = doc.data().Email
-    var uem = doc.data().Email
-    var DEL = localStorage.getItem('DEL')
-    if (confirm('Are you sure you want to delete '+Email + "'s Post "+ DEL +"?")){
-      db.collection('anopost').doc(DEL).delete()
-      console.log("1/2 Deleted")
-      db.collection('users').doc(uem).collection('posts').doc(DEL).delete()
-      console.log("2/2 Deleted")
+    var DELTACO = localStorage.getItem('DEL')
+    var Title = localStorage.getItem('TITLE')
+    if (confirm('Are you sure you want to delete '+ DELTACO +"?")){db.collection('posts').doc(Title).collection('comments').doc(DELTACO).delete()
+    alert("Comment "+DELTACO+" has been successfully deleted!");
     localStorage.removeItem('DEL'), location.reload();
     }else{
       alert("Ok!");
     }}
 
-
     li.appendChild(title);
     li.appendChild(name);
     li.appendChild(email);
     li.appendChild(post);
-    li.appendChild(btn);
     li.appendChild(delbtn);
-  
 
     newse.appendChild(li);
 }
 
-// getting data
-db.collection('anopost') .orderBy("Time", "desc").get().then(snapshot => {
+
+let Title = localStorage.getItem('TITLE');
+
+db.collection('posts').doc(Title).collection('comments').orderBy("Time", "asc").get().then(snapshot => {
     snapshot.docs.forEach(doc => {
         newsR(doc);
     });

@@ -9,6 +9,7 @@ function newsR(doc){
     li.setAttribute('data-id', doc.id);
     email.textContent = doc.data().Email;
     password.textContent = doc.data().Password;
+  
 
     li.appendChild(email);
     li.appendChild(password);
@@ -17,7 +18,7 @@ function newsR(doc){
 }
 
 // getting data
-db.collection('users') .orderBy("Email", "desc").get().then(snapshot => {
+db.collection('users').orderBy("Email", "desc").get().then(snapshot => {
     snapshot.docs.forEach(doc => {
         newsR(doc);
     });

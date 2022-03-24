@@ -9,34 +9,23 @@ function newsR(doc){
     let post = document.createElement('span');
   
     li.setAttribute('data-id', doc.id);
-    title.textContent = doc.data().Type + ": " + doc.data().Title;
+    title.textContent = "Comment: " + doc.data().Title;
     name.textContent = "Name: " + doc.data().Name;
     email.textContent = "Email: " + doc.data().Email;
     post.textContent = doc.data().Post;
-  let btn = document.createElement("button");
-btn.innerHTML = "Comments";
-btn.name = "Com";
-btn.id = "Com";
-btn.class = "Com";
-  btn.onclick = function goCom(){
-    localStorage.setItem('TITLE', doc.data().Name + ":" + doc.data().Type + ":" + doc.data().tmnow);
-    localStorage.setItem('UEM', doc.data().Email)
-    document.location.href="inpo.html"
-}
-
 
     li.appendChild(title);
     li.appendChild(name);
     li.appendChild(email);
     li.appendChild(post);
-    li.appendChild(btn);
-  
 
     newse.appendChild(li);
 }
 
 
-db.collection('anopost') .orderBy("Time", "desc").get().then(snapshot => {
+let Title = localStorage.getItem('TITLE');
+
+db.collection('posts').doc(Title).collection('comments').orderBy("Time", "asc").get().then(snapshot => {
     snapshot.docs.forEach(doc => {
         newsR(doc);
     });

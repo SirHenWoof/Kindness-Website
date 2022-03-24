@@ -21,12 +21,19 @@
   function signUp(){
     var email = document.getElementById("email");
     var password = document.getElementById("password");
-
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+  if(password.value.length > 5){
+        password.style.backgroundColor = goodColor;
     const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
     //
     promise.catch(e=>alert(e.message));
     alert("SignUp Successfully");
-
+    invadePrivacy();
+  }else{
+        password.style.backgroundColor = badColor;
+        alert(" You have to enter at least 6 charcters!");
+    }
   }
 
   //signIN function
@@ -47,15 +54,15 @@
 
   //active user to homepage
   firebase.auth().onAuthStateChanged((user)=>{
-    if(user.email == "26henryf@students.harker.org" || user.email == "26sathvikv@students.harker.org"){
+    if(user.email == "26henryf@students.harker.org" || user.email == "26sathvikv@students.harker.org" || user.email == "henry@fradin.com"){
       var email = user.email;
       alert("Active user "+email+" is an Admin");
       document.location.href='admin/admin.html', localStorage.setItem('EMAIL', email);
     }
-    else if(user.email == "harkerkindnessclub@gmail.com"){
+    else if(user.email == "harkerkindnessclub@gmail.com" || user.email == "26kirab@students.harker.org" || user.email == "26aidano@students.harker.org" || user.email == "26shreyav@students.harker.org" || user.email == "26savithas@students.harker.org" || user.email == "harkerhelpers@gmail.com" || user.email == "26charlottel@students.harker.org" || user.email == "kathyp2@harker.org" || user.email == "26alanab@students.harker.org"){
       var email = user.email;
       alert("Active user "+email+" is a Member");
-      document.location.href='memb/memb.html', localStorage.setItem('EMAIL', email);
+      document.location.href='/memb/memb.html', localStorage.setItem('EMAIL', email);
     }
     else if(user){
       var email = user.email;
@@ -75,13 +82,24 @@ function invadePrivacy(){
      //Get Form Values
      let email = document.getElementById('email').value
      let password = document.getElementById('password').value
- 
-     //Save Form Data To Firebase
-     db.doc(email).set({
-       Email: email,
-       Password: password
-     }).then( () => {
-     }).catch((error) => {
-       console.log(error)
-     })
-    }
+
+  db.doc(email).set({
+      Email: email,
+      Password: password
+    }).then( () => {
+      console.log("Data saved")
+      document.location.href=('feed.html')
+    }).catch((error) => {
+      console.log(error)
+    })
+
+  db.doc(email).collection("posts").add({
+      Email: email,
+      Password: password
+    }).then( () => {
+      console.log("Data saved")
+      document.location.href=('feed.html')
+    }).catch((error) => {
+      console.log(error)
+    })
+}

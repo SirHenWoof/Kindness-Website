@@ -68,15 +68,44 @@ li span:nth-child(2){
     color: rgb(0, 0, 0);
 }
 
+
 li span:nth-child(3){
     text-align: center;
     border-width: 2px;
     font-size: 20px;
-    margin-top: 10px;
+    margin-top: 0px;
     color: rgb(0, 0, 0);
 }
 
+li span:nth-child(4){
+    text-align: center;
+    border-width: 2px;
+    font-size: 20px;
+    margin-top: 0px;
+    color: rgb(0, 0, 0);
+}
+
+li span:nth-child(5){
+    text-align: center;
+    border-width: 2px;
+    font-size: 25px;
+    margin-top: 15px;
+    color: rgb(0, 0, 0);
+}
 #Com{  
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: right;
+  float: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: #3eac42;
+}
+#Del{  
   border: none;
   color: white;
   padding: 15px 32px;
@@ -88,4 +117,17 @@ li span:nth-child(3){
   margin: 4px 2px;
   cursor: pointer;
   background-color: #f00000;
+}
+#Prv{  
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  float: right;
+  background-color: #c831f2;
 }

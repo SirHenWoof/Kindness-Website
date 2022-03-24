@@ -5,44 +5,44 @@ function newsR(doc){
     let li = document.createElement('li');
     let title = document.createElement('span');
     let name = document.createElement('span');
-    let email = document.createElement('span');
+    let type = document.createElement('span');
+    let PoLo = document.createElement('span');
     let post = document.createElement('span');
-  
+
     li.setAttribute('data-id', doc.id);
-    title.textContent = doc.data().Type + ": " + doc.data().Title;
+    title.textContent = doc.data().Title;
     name.textContent = "Name: " + doc.data().Name;
-    email.textContent = "Email: " + doc.data().Email;
+    type.textContent = "Type of Post: " + doc.data().Type;
+    PoLo.textContent = "How Was Post Submitted: " + doc.data().PoLo;
     post.textContent = doc.data().Post;
-  let btn = document.createElement("button");
-btn.innerHTML = "Comments";
-btn.name = "Com";
-btn.id = "Com";
-btn.class = "Com";
-  btn.onclick = function goCom(){
-    localStorage.setItem('TITLE', doc.data().Name + ":" + doc.data().Type + ":" + doc.data().tmnow);
-    localStorage.setItem('UEM', doc.data().Email)
-    document.location.href="inpo.html"
-}
-    let delbtn = document.createElement("button");
+  let delbtn = document.createElement("button");
 delbtn.innerHTML = "Delete Post";
 delbtn.name = "Del";
 delbtn.id = "Del";
 delbtn.class = "Del";
   delbtn.onclick = function goDel(){    
     localStorage.setItem('DEL', doc.data().Name + ":" + doc.data().Type + ":" + doc.data().tmnow);
-    var uem = doc.data().Email
+    var Email = localStorage.getItem('EMAIL');
     var DEL = localStorage.getItem('DEL')
-    if (confirm('Are you sure you want to delete '+uem + "'s Post "+ DEL +"?")){
+    if (confirm('Are you sure you want to delete '+ DEL +"?")){
       db.collection('posts').doc(DEL).delete()
-      console.log("1/2 Deleted")
-      db.collection('users').doc(uem).collection('posts').doc(DEL).delete()
-      console.log("2/2 Deleted")
+      db.collection('users').doc(Email).collection('posts').doc(DEL).delete()
+     db.collection('anopost').doc(DEL).delete()
+    alert("Document "+DEL+" has been successfully deleted!");
     localStorage.removeItem('DEL'), location.reload();
     }else{
       alert("Ok!");
     }}
-
-  let prvbtn = document.createElement("button");
+    let btn = document.createElement("button");
+btn.innerHTML = "Comments";
+btn.name = "Com";
+btn.id = "Com";
+btn.class = "Com";
+  btn.onclick = function goCom(){
+    localStorage.setItem('TITLE', doc.data().Name + ":" + doc.data().Type + ":" + doc.data().tmnow);
+    document.location.href="inpo.html"
+}
+    let prvbtn = document.createElement("button");
 prvbtn.innerHTML = "Private Post";
 prvbtn.name = "Prv";
 prvbtn.id = "Prv";
@@ -74,8 +74,8 @@ let Email = doc.data().Email
       Time: indid,
       tmnow: tmnow
     }).then( () => {
-      console.log("Data saved 1/4")
-      document.location.href=('anon.html')
+      console.log("Data saved")
+      document.location.href=('myposts.html')
     }).catch((error) => {
       console.log(error)
     })
@@ -90,12 +90,13 @@ let Email = doc.data().Email
       Time: indid,
       tmnow: tmnow
     }).then( () => {
-      console.log("Data saved 2/4")
-      document.location.href=('anon.html')
+      console.log("Data saved")
+      document.location.href=('myposts.html')
     }).catch((error) => {
       console.log(error)
     })
-
+db.collection('posts').doc(PRV).delete()
+      db.collection('users').doc(Email).collection('posts').doc(PRV).delete()
   udb.doc(Email).collection("posts").doc(name + ":" + type + ":" +   tmnow).set({
       Title: title,
       Name: name,
@@ -106,8 +107,8 @@ let Email = doc.data().Email
       Time: indid,
       tmnow: tmnow
     }).then( () => {
-      console.log("Data saved 3/4")
-      document.location.href=('anon.html')
+      console.log("Data saved")
+      document.location.href=('myposts.html')
     }).catch((error) => {
       console.log(error)
     })
@@ -121,33 +122,36 @@ let Email = doc.data().Email
       Time: indid,
       tmnow: tmnow
     }).then( () => {
-      console.log("Data saved 4/4")
-      document.location.href=('anon.html')
+      console.log("Data saved")
+      document.location.href=('myposts.html')
     }).catch((error) => {
       console.log(error)
     })
   
-db.collection('posts').doc(PRV).delete()
-      db.collection('users').doc(Email).collection('posts').doc(PRV).delete()
+    alert("Document "+PRV+" has been successfully privated!");
     localStorage.removeItem('PRV'), location.reload();
     }else{
       alert("Ok!");
     }}
 
+
     li.appendChild(title);
     li.appendChild(name);
-    li.appendChild(email);
+    li.appendChild(type);
+    li.appendChild(PoLo);
     li.appendChild(post);
-    li.appendChild(btn);
     li.appendChild(delbtn);
-    li.appendChild(prvbtn)
+    li.appendChild(btn);
+    li.appendChild(prvbtn);
   
 
     newse.appendChild(li);
 }
 
+
+let Email = localStorage.getItem('EMAIL');
 // getting data
-db.collection('posts').orderBy("Time", "desc").get().then(snapshot => {
+db.collection('users').doc(Email).collection('posts').orderBy("Time", "desc").get().then(snapshot => {
     snapshot.docs.forEach(doc => {
         newsR(doc);
     });
